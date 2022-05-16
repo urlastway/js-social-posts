@@ -56,15 +56,21 @@ const posts = [
     }
 ];
 
+const postMetaAutorName = document.querySelector(".post-meta__author");
 const postMetaIcon = document.querySelector(".post-meta__icon");
-const postMetaData = document.querySelector(".post-meta__data");
 const postImg = document.querySelector(".post__image");
 const postText = document.querySelector(".post__text");
 
-const containerHTML = document.getElementById("container");
+const container = [postMetaIcon, postMetaAutorName, postImg, postText];
 
 for(let i=0; i < posts.length; i++){
     const postsPerson = posts[i];
-    const postsPersonHTML = `${postsPerson.content} ${postsPerson.media} ${postsPerson.author.name} ${postsPerson.author.image}`;
-    containerHTML.innerHTML += postsPersonHTML;
+    const postsPersonHTML = `${postsPerson.author.name} ${postsPerson.author.image} ${postsPerson.media} ${postsPerson.content}`;
+    postMetaIcon.innerHTML = postsPerson.author.image;
+    postMetaAutorName.innerHTML = postsPerson.author.name;
+    postImg.innerHTML = postsPerson.media;
+    postText.innerHTML = postsPerson.content;
+}
+for(let i=0; i < posts.length; i++){
+
 }
