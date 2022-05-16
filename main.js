@@ -65,6 +65,6 @@ const containerHTML = document.getElementById("container");
 
 for(let i=0; i < posts.length; i++){
     const postsPerson = posts[i];
-    const postsPersonHTML = `${postsPerson.content} ${postsPerson.media} ${postsPerson.author} ${postsPerson.likes}`;
+    const postsPersonHTML = `${postsPerson.content} ${postsPerson.media} ${postsPerson.author.name} ${postsPerson.author.image}`;
     containerHTML.innerHTML += postsPersonHTML;
 }
