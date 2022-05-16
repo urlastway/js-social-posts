@@ -1,7 +1,3 @@
-function printPosts(conteiner, posts){
-
-};
-
 const posts = [
     {
         "id": 1,
@@ -59,14 +55,16 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
-console.log(posts);
 
-const postMetaIcon = document.querySelector("post-meta__icon");
-const postMetaData = document.querySelector("post-meta__data");
-const postImg = document.querySelector("post__image");
-const postText = document.querySelector("post__text");
+const postMetaIcon = document.querySelector(".post-meta__icon");
+const postMetaData = document.querySelector(".post-meta__data");
+const postImg = document.querySelector(".post__image");
+const postText = document.querySelector(".post__text");
 
+const containerHTML = document.getElementById("container");
 
-
-for(let i = 0; i < posts; i++){
-};
+for(let i=0; i < posts.length; i++){
+    const postsPerson = posts[i];
+    const postsPersonHTML = `${postsPerson.content} ${postsPerson.media} ${postsPerson.author} ${postsPerson.likes}`;
+    containerHTML.innerHTML += postsPersonHTML;
+}
