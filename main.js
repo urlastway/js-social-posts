@@ -68,8 +68,13 @@ for(let i = 0; i < posts.length; i++){
     postHTML.querySelector(".post-meta__author").innerHTML = author.name;
     postHTML.querySelector(".post-meta__time").innerHTML = created;
     postHTML.querySelector(".post__text").innerHTML = content;
-    postHTML.querySelector(".post__image img").alt = media;
     postHTML.querySelector(".post__image img").src = media;
     postHTML.querySelector(".js-likes-counter").innerHTML = likes;
+    postHTML.querySelector(".js-likes-counter").id = `like-counter-${id}`;
+    postHTML.querySelector(".js-like-button").addEventListener("click", function(e) {
+        e.preventDefault();
+        this.classList.toggle("like-button--liked");
+    });
+
     containerHTML.append(postHTML);
 }
