@@ -56,21 +56,20 @@ const posts = [
     }
 ];
 
-const postMetaAutorName = document.querySelector(".post-meta__author");
-const postMetaIcon = document.querySelector(".post-meta__icon");
-const postImg = document.querySelector(".post__image");
-const postText = document.querySelector(".post__text");
+const containerHTML = document.querySelector("#container");
 
-const container = [postMetaIcon, postMetaAutorName, postImg, postText];
+const tplPostHTML = document.querySelector("#tpl-post").content;
 
-for(let i=0; i < posts.length; i++){
-    const postsPerson = posts[i];
-    const postsPersonHTML = `${postsPerson.author.name} ${postsPerson.author.image} ${postsPerson.media} ${postsPerson.content}`;
-    postMetaIcon.innerHTML = postsPerson.author.image;
-    postMetaAutorName.innerHTML = postsPerson.author.name;
-    postImg.innerHTML = postsPerson.media;
-    postText.innerHTML = postsPerson.content;
-}
-for(let i=0; i < posts.length; i++){
-
+for(let i = 0; i < posts.length; i++){
+    const postHTML = tplPostHTML.cloneNode(true);
+    const {id, content, media, author, likes, created} = posts[i];
+    postHTML.querySelector(".profile-pic").src = author.image;
+    postHTML.querySelector(".profile-pic").alt = author.name;
+    postHTML.querySelector(".post-meta__author").innerHTML = author.name;
+    postHTML.querySelector(".post-meta__time").innerHTML = created;
+    postHTML.querySelector(".post__text").innerHTML = content;
+    postHTML.querySelector(".post__image img").alt = media;
+    postHTML.querySelector(".post__image img").src = media;
+    postHTML.querySelector(".js-likes-counter").innerHTML = likes;
+    containerHTML.append(postHTML);
 }
